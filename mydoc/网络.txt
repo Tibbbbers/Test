@@ -1,0 +1,8 @@
+网络
+1.https://www.cnblogs.com/51benpao/p/12984951.html   一次访问网页请求的全过程详解
+
+
+计算机网络：
+1.socket编程
+2.长链接短链接
+3.dubbo

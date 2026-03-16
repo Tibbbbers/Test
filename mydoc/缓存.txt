@@ -1,0 +1,6 @@
+本地缓存：
+guava cache
+ehcache
+
+
+4.堆外缓存怎么使用  https://www.jianshu.com/p/17e72bb01bf1

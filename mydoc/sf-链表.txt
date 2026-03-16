@@ -1,0 +1,205 @@
+2.反转链表 206
+
+private ListNode reserve(ListNode head) {
+    ListNode prev = null;
+    ListNode curr = head;
+    while (curr != null) {
+        ListNode dummy = curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr = dummy;
+}
+   return prev;
+
+}
+
+3.合并递增链表   21
+
+private ListNode merge (ListNode l1,ListNode l2){
+    ListNode dummy = new ListNode(-1);
+    ListNode curr = dummy;
+    while (l1 != null && l2 != null){
+        if (l1.val > l2.val) {
+            curr.next = l2;
+            l2 = l2.next;
+        } else {
+            curr.next = l1;
+            l1 = l1.next;
+        }
+        curr = curr.next;
+    }
+    curr.next = l1 != null ? l1 : l2;
+    return dummy.next;
+}
+
+
+
+
+6.范围内反转链表  92
+
+class Solution {
+    public ListNode reverseBetween(ListNode head, int left, int right) {
+        // 因为头节点有可能发生变化，使用虚拟头节点可以避免复杂的分类讨论
+        ListNode dummyNode = new ListNode(-1);
+        dummyNode.next = head;
+
+        ListNode pre = dummyNode;
+        // 第 1 步：从虚拟头节点走 left - 1 步，来到 left 节点的前一个节点
+        // 建议写在 for 循环里，语义清晰
+        for (int i = 0; i < left - 1; i++) {
+            pre = pre.next;
+        }
+
+
+        // 第 2 步：从 pre 再走 right - left + 1 步，来到 right 节点
+        ListNode rightNode = pre;
+        for (int i = 0; i < right - left + 1; i++) {
+            rightNode = rightNode.next;
+        }
+
+
+        // 第 3 步：切断出一个子链表（截取链表）
+        ListNode leftNode = pre.next;
+        ListNode curr = rightNode.next;
+
+
+        // 注意：切断链接
+        pre.next = null;
+        rightNode.next = null;
+
+
+        // 第 4 步：同第 206 题，反转链表的子区间
+        reverseLinkedList(leftNode);
+
+
+        // 第 5 步：接回到原来的链表中
+        pre.next = rightNode;
+        leftNode.next = curr;
+        return dummyNode.next;
+    }
+
+
+    private void reverseLinkedList(ListNode head) {
+        // 也可以使用递归反转一个链表
+        ListNode pre = null;
+        ListNode cur = head;
+
+
+        while (cur != null) {
+            ListNode next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+    }
+}
+
+
+11.判断链表是否存在闭环
+public static boolean isCycle(ListNode head) {
+    ListNode p1 = head;
+    ListNode p2 = head;
+    while (p2 != null && p2.next != null) {
+        p1 = p1.next;
+        p2 = p2.next.next;
+        if (p1 == p2) {
+            return true;
+        }
+    }
+    return false;
+}
+
+86. 分隔链表
+class Solution {
+    public ListNode partition(ListNode head, int x) {
+        ListNode small = new ListNode(0);
+        ListNode smallHead = small;
+        ListNode large = new ListNode(0);
+        ListNode largeHead = large;
+        while (head != null) {
+            if (head.val < x) {
+                small.next = head;
+                small = small.next;
+            } else {
+                large.next = head;
+                large = large.next;
+            }
+            head = head.next;
+        }
+        large.next = null;
+        small.next = largeHead.next;
+        return smallHead.next;
+    }
+}
+
+
+
+剑指 Offer 22. 链表中倒数第k个节点
+public ListNode getKthFromEnd(ListNode head, int k) {
+    ListNode former = head;
+    ListNode latter = head;
+    for (int i = 0; i < k; i++) {
+        former = former.next;
+    }
+    while (former != null) {
+        former = former.next;
+        latter = latter.next;
+    }
+    return latter;
+}
+
+
+链表右移
+public ListNode rotateRight(ListNode head, int n) {
+    if (head == null || head.next == null) {
+        return head;
+    }
+    //测试用例中有n大于length of list的情况；
+    ListNode temp = head;
+    int count = 1;
+    while (temp.next != null) {
+        temp = temp.next;
+        count++;
+    }
+    n = n % count;
+    if (0 == n) {
+        return head;
+    }
+    ListNode first = head;
+    ListNode second = head;
+    //先找到倒数第n个结点；
+    int num = 1;
+    while (num < n && second != null) {
+        second = second.next;
+        num++;//while循环中一定要注意别少了对变量的修改，避免进入死循环；
+    }
+    //firstpre记录倒数第n个结点的上一个结点;
+    ListNode firstpre = first;
+    while (second.next != null) {
+        firstpre = first;
+        first = first.next;
+        second = second.next;
+    }
+    second.next = head;
+    head = first;
+    firstpre.next = null;
+    return head;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

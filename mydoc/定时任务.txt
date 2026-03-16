@@ -1,0 +1,5 @@
+定时任务原理：
+1.quartz
+2.cron 表达式
+3.分布式定时任务：https://blog.csdn.net/mrleeapple/article/details/87805182
+4.Java 定时任务实现原理详解   https://blog.csdn.net/u013332124/article/details/79603943

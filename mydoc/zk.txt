@@ -1,0 +1,37 @@
+zk:
+1.zk工作原理、核心机制：https://blog.csdn.net/fenglongmiao/article/details/79305010
+2.四种类型的节点： PERSISTENT-持久化目录节点、PERSISTENT_SEQUENTIAL-持久化顺序编号目录节点、EPHEMERAL-临时目录节点、EPHEMERAL_SEQUENTIAL-临时顺序编号目录节点
+3.zk实现分布式锁 https://blog.csdn.net/qq_35190492/article/details/105352672
+4.zk保证了  分区容忍性、一致性  （为什么没有可用性）
+5.zk选举机制
+6.zk怎么实现负载均衡
+7.zk上有问题节点实战   7.1Zookeeper的崩溃恢复问题  https://blog.csdn.net/frockee/article/details/83117701
+                                        7.2.Zookeeper集群的崩溃恢复   https://blog.csdn.net/zyxhangiian123456789/article/details/106813472
+8.zk的选举过程  https://blog.csdn.net/long290046464/article/details/81408624
+
+https://blog.csdn.net/rfdjds/article/details/121044372?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1.essearch_pc_relevant&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1.essearch_pc_relevant
+zk选举机制—第一次启动
+第一台机器启动服务，发起选举，先投自己一票，查看当前集群中的其他zk服务，当前仅有一台；由于票数小于一半（不小于3），进入观察模式LOOKING，等待其他机器启动服务。
+第二台机器启动服务，发起选举，都先投自己一票，查看是否有其他启动服务的机器；可查询到第一台机器，经过比对myid大小，第一台服务器将票改投给第二台服务器。由于票数小于一半（不小于3），进入观察模式LOOKING，等待其他机器启动服务。
+第三台服务器启动，发起选举，交换信息后，三台机器都将票投给第三胎服务器，此时票数不小于一半且不小于三，那么第三台服务器为Leader，其余两台为Follower，并且状态发生改变，3为LEADING，1 2为FOLLOWING。
+第四台服务器启动，发起选举，由于前三台服务器状态不是LOOKING，不会参与到选举，票数不会更改，所以4的票为1，3的为3，4的状态改为FOLLOWING。
+第五台机器启动，发起选举，由于前四台服务器状态不是LOOKING，不会参与到选举，票数不会更改，所以5的票为1，4的票为1，3的为3，5的状态改为FOLLOWING。
+
+zk选举机制—非第一次启动
+当集群中的一台服务器出现以下两种情况，就会进行leader的选举。
+服务器初始化
+服务器运行期间和leaderx失联
+当一台机器进行leader选举时会出现以下两种情况：
+当前集群存在leader
+进行选举的机器会被告知当前集群存在一个leader，那么该机器只需要与leader建立连接。
+当前集群不存在leader
+那么集群会先比较epoch，再比较zxid，最后比较sid。并按如下规则：
+1. EPOCH最大者直接成为leader
+2. EPOCH相同者，ZXID最大者成为leader
+3. ZXID相同者，SID最大者成为leader
+EPOCH: ：每个Leader任期的代号。没有Leader时同一轮投票过程中的逻辑时钟值是相同的。每投完一次票这个数据就会增加。
+ZXID:事务ID。ZXID是一个事务ID，用来标识一次服务器状态的变更。在某一时刻，集群中的每台机器的ZXID值不一定完全一致，这和ZooKeeper服务器对于客户端“更新请求”的处理逻辑有关。
+SID:服务器ID。用来唯一标识一台ZooKeeper集群中的机器，每台机器不能重复，和myid一致。
+
+
+一致性hash https://www.jianshu.com/p/528ce5cd7e8f

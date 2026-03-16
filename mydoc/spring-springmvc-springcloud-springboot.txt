@@ -1,0 +1,50 @@
+spring:
+1.有哪些不同类型的 IOC（依赖注入）方式
+构造器依赖注入：构造器依赖注入通过容器触发一个类的构造器来实现
+的，该类有一系列参数，每个参数代表一个对其他类的依赖。
+Setter 方法注入：Setter 方法注入是容器通过调用无参构造器或无参
+static 工厂 方法实例化 bean 之后，调用该 bean 的 setter 方法，即实现了基
+于 setter 的依赖注入。
+
+2.@Transactional实现原理 https://blog.csdn.net/qq_20597727/article/details/84868035
+3.aop实现原理  https://blog.csdn.net/qq_20597727/article/details/84800176
+3.设计模式之代理模式 https://blog.csdn.net/qq_20597727/article/details/83594232
+4.私有方法或者static方法上加@Transactional是否有作用
+5.spring中的@Transactional 放在类级别 和 方法级别 上有什么不同？   https://blog.csdn.net/qq_15325579/article/details/77678235
+6.Transactional  方法套方法能不能生效  为什么  由于使用Spring AOP代理造成的，因为只有当事务方法被当前类以外的代码调用时，才会由Spring生成的代理对象来管理。        https://www.cnblogs.com/ynyhl/p/12066530.html
+7.bean的注入过程  https://www.cnblogs.com/swek/articles/4344397.html    https://blog.csdn.net/qq36846776/article/details/116265843
+8.spring注入bean的几种方式：https://zhuanlan.zhihu.com/p/91218997  1.autowire 注解 2.2.set方法注入  3.3.构造器注入
+9.动态代理实现方式 cgliob
+10.CGLib动态代理原理及实现   https://www.iteye.com/blog/songbo-mail-126-com-968792
+11.三级缓存解决循环依赖  https://blog.csdn.net/weixin_45596022/article/details/110351170   https://zhuanlan.zhihu.com/p/84267654
+12.cglib和jdk动态代理区别有哪些   https://www.html.cn/qa/other/22646.html
+13.多数据源事务https://blog.csdn.net/u012345283/article/details/47059537
+
+springmvc：
+1.springMvc流程
+1、  用户发送请求至前端控制器DispatcherServlet。
+2、  DispatcherServlet收到请求调用HandlerMapping处理器映射器。
+3、  处理器映射器找到具体的处理器(可以根据xml配置、注解进行查找)，生成处理器对象及处理器拦截器(如果有则生成)一并返回给DispatcherServlet。
+4、  DispatcherServlet调用HandlerAdapter处理器适配器。
+5、  HandlerAdapter经过适配调用具体的处理器(Controller，也叫后端控制器)。
+6、  Controller执行完成返回ModelAndView。
+7、  HandlerAdapter将controller执行结果ModelAndView返回给DispatcherServlet。
+8、  DispatcherServlet将ModelAndView传给ViewReslover视图解析器。
+9、  ViewReslover解析后返回具体View。
+10、DispatcherServlet根据View进行渲染视图（即将模型数据填充至视图中）。
+11、 DispatcherServlet响应用户。
+
+事务流程 ：
+1.所用的所有类
+
+
+
+
+
+springcloud:
+
+
+7.spring Boot springmvc区别
+
+
+spring事务：
