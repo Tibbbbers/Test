@@ -1,0 +1,167 @@
+java:
+1.锁
+2.hashmap
+3.Object 类中有哪些方法。
+4.equals 与hashcode与==有什么区别  https://www.cnblogs.com/justdojava/p/11271438.html
+3.java泛型理解和深入  https://zhuanlan.zhihu.com/p/40925435
+https://mp.weixin.qq.com/s?__biz=MzI4Njg5MDA5NA==&mid=2247484109&idx=1&sn=ed48fa9216c260fb9b622d9f383d8c25&chksm=ebd743ccdca0cadad9e8e4a5cd9a7ce96b595ddaf6fb2e817a9a0d49d4d54c50bb93a97e56eb&scene=21###wechat_redirect
+4.https://blog.csdn.net/o9109003234/article/details/106247751
+HashMap 允许null hashtable 不允许为null
+为什么hashMap需要2的幂作为初始容量？而hashtable选择11作为默认初始容量？
+
+4.1 【转】头插法和尾插法  http://t.zoukankan.com/day1day1up-p-14887592.html
+
+5.Hashmap-存取数据的过程   https://blog.csdn.net/bll1992/article/details/95603007
+5.1为什么hashmap不是线程安全的  https://blog.csdn.net/weixin_43092168/article/details/89791106
+6.静态内部类与内部类的区别 https://blog.csdn.net/wangzhibo666/article/details/87857355
+7.注解 Retention  、  Target
+8.AQS   https://zhuanlan.zhihu.com/p/86072774
+8.红黑树原理 https://www.jianshu.com/p/37c845a5add6
+9.java8 stream原理 与collect有啥不同
+10.超大并发量下 怎么只取前1000个请求，
+11.控制库存不被超卖
+12.发送上亿的优惠券解决方案
+13.AQS 与 syncronize区别
+    13.1AQS详细源码， 例如 countDownLatch的countDown方法原理
+14.死锁出现的场景以及预防  https://blog.csdn.net/hd12370/article/details/82814348
+14.1 如何判断我们写的程序是有死锁  https://www.cnblogs.com/zhangmingda/p/14691359.html
+      jps -l 命令来获取对应的进程pid:
+    获取到对应的Pid之后用jstack命令来查看是否有死锁：
+    jstack -l 26640
+
+15.怎么自定义异常
+16.CAP
+17.死锁，死锁的四个必要条件以及处理策略   https://blog.csdn.net/wljliujuan/article/details/79614019
+        产生死锁的四个必要条件 互斥条件  不可剥夺条件  请求与保持条件 循环等待条件
+18AQS与synchronize 区别 https://blog.csdn.net/u012373815/article/details/111035234
+19.序列化有几种方式
+    1.Java原生序列化
+    2.Hessian 序列化
+    3.Json序列化
+20.java8新特性
+21.stream foreach 是优化了么’
+22.java new一个对象发生了什么  https://zhuanlan.zhihu.com/p/57515223?utm_source=wechat_session&utm_medium=social&utm_oi=77468962652160
+23.JAVA并发（3）—线程运行时发生GC，会回收ThreadLocal弱引用的key吗？  https://www.jianshu.com/p/78ac437a03bc
+24.countdownlatch/ cycle
+25.Hessian的缺点   https://blog.csdn.net/wodediqizhang/article/details/51603512    Hessian知识学习总结（一）——基础知识
+26.Guava Cache本地缓存总结 https://www.cnblogs.com/boothsun/p/5848143.html    https://blog.csdn.net/joeyon1985/article/details/40302699
+27.最佳内存缓存框架Caffeine   https://www.cnblogs.com/cjsblog/p/11517761.html
+28.juc包常用类
+29.解释下动态代理
+30.java锁机制：浅谈偏向锁、轻量级锁、重量级锁    https://www.jianshu.com/p/36eedeb3f912
+31.信号量 、countdownlatch 、cyclibirrer
+32.类加载 真正理解线程上下文类加载器（多案例分析）    https://blog.csdn.net/yangcheng33/article/details/52631940
+
+双亲委派模式的破坏者：线程上下文类加载器
+
+
+
+
+多线程：
+1.线程池7个参数   corePoolSize maximumPoolSize keepAliveTime TimeUnit.Secibds
+2.线程池核心线程数估算 （IO密集型 2n+1、CPU密集型 n）https://www.cnblogs.com/651434092qq/p/14240406.html
+3.线程的五种状态 新建(new)-> 可运行(runnable)->运行(running)->阻塞(block)-> 死亡状态（Dead）     https://www.cnblogs.com/moonlightml/p/9777205.html
+4.多线程面试题 https://blog.csdn.net/tanmomo/article/details/99671622
+5.ThreadLocal面试题原理
+
+Synchronized
+1.Synchronized同步静态方法和非静态方法总结  https://blog.csdn.net/u010842515/article/details/65443084
+2.synchronized加锁范围  静态方法、非静态方法、代码块
+3.synchronized 是非公平锁  https://www.zhihu.com/question/48140804
+4.Synchronized与ReentrantLock区别总结https://blog.csdn.net/zxd8080666/article/details/83214089
+5.同一个类里面两个synchronized方法，两个线程同时访问的问题 https://blog.csdn.net/github_37130188/article/details/97638651
+
+
+
+
+4.解释动态代理是什么
+https://www.jianshu.com/p/ae9e4b63dda5
+两种动态代理：
+（1）jdk动态代理，jdk动态代理是由Java内部的反射机制来实现的，目标类基于统一的接口（InvocationHandler）
+（2）cglib动态代理，cglib动态代理底层则是借助asm来实现的，cglib这种第三方类库实现的动态代理应用更加广泛，且在效率上更有优势。
+   cglib动态代理实现：
+JDK的动态代理机制只能代理实现了接口的类，而不能实现接口的类就不能实现JDK的动态代理，cglib是针对类来实现代理的，他的原理是对指定的目标类生成一个子类，并覆盖其中方法实现增强，但因为采用的是继承，所以不能对final修饰的类进行代理。
+CGLIB的核心类：
+net.sf.cglib.proxy.Enhancer – 主要的增强类
+net.sf.cglib.proxy.MethodInterceptor – 主要的方法拦截类，它是Callback接口的子接口，需要用户实现
+net.sf.cglib.proxy.MethodProxy – JDK的java.lang.reflect.Method类的代理类，可以方便的实现对源对象方法的调用。
+net.sf.cglib.proxy.MethodInterceptor接口是最通用的回调（callback）类型，它经常被基于代理的AOP用来实现拦截（intercept）方法的调用。这个接口只定义了一个方法
+public Object intercept(Object object, java.lang.reflect.Method method,
+Object[] args, MethodProxy proxy) throws Throwable;
+第一个参数是代理对像，第二和第三个参数分别是拦截的方法和方法的参数。原来的方法可能通过使用java.lang.reflect.Method对象的一般反射调用，或者使用 net.sf.cglib.proxy.MethodProxy对象调用。net.sf.cglib.proxy.MethodProxy通常被首选使用，因为它更快。
+
+
+6.AQS源码底层 聊聊你对AQS的理解  AbstractQueuedSynchronizer，抽象队列同步器
+https://zhuanlan.zhihu.com/p/86072774
+
+
+7.分类说明JUC包常用类有哪些 https://blog.csdn.net/qq_42253147/article/details/96903458
+JUC中常用类汇总
+JUC的atomic包下运用了CAS的AtomicBoolean、AtomicInteger、AtomicReference等原子变量类
+JUC的locks包下的AbstractQueuedSynchronizer（AQS）以及使用AQS的ReentantLock（显式锁）、ReentrantReadWriteLock
+附：运用了AQS的类还有：Semaphore、CountDownLatch、ReentantLock（显式锁）、ReentrantReadWriteLock
+JUC下的一些同步工具类：CountDownLatch（闭锁）、Semaphore（信号量）、CyclicBarrier（栅栏）、FutureTask
+JUC下的一些并发容器类：ConcurrentHashMap、CopyOnWriteArrayList
+JUC下的一些Executor框架的相关类： 线程池的工厂类->Executors 线程池的实现类->ThreadPoolExecutor/ForkJoinPool
+JUC下的一些阻塞队列实现类：ArrayBlockingQueue、LinkedBlockingQueue、PriorityBlockingQueue
+
+7.1ReentrantLock的底层原理
+https://zhuanlan.zhihu.com/p/249147493
+7.2算法：CLH锁的原理及实现
+https://blog.csdn.net/claram/article/details/83828768
+
+
+
+9.死锁
+
+3.序列化方式有哪几种  有什么区别
+
+
+threadLocal 原理：https://www.cnblogs.com/luxiaoxun/p/8744826.html
+threadLocal 使用场景： https://www.cnblogs.com/yxysuanfa/p/7125761.html     https://blog.csdn.net/u011212394/article/details/107028016
+
+
+synchronize锁升级机制总结  https://blog.csdn.net/qq_42832874/article/details/108358003   https://www.jianshu.com/p/d61f294ac1a6
+   以前synchronize默认就是悲观锁，是在JVM层面上加锁的，加锁解锁的开销都比较大。所以引入了偏向锁、轻量级锁、重量级锁。
+
+
+
+
+
+
+
+
+
+
+Hashmap ：
+https://blog.csdn.net/o9109003234/article/details/106247751
+https://blog.csdn.net/bll1992/article/details/95603007
+
+
+
+
+
+Jmap  =heap javaPid
+
+
+
+
+Java VisulVm  可以分析dump文件 查看哪个实例占用最多
+
+
+Bitmap
+
+Zset    ：数据量少用ziplist     skipList+dict
+
+
+
+
+B树存储键值+数据
+B+树只有叶子结点存储数据。叶子结点通过链表链接  查询范围更好  其他只存储键值   查询
+
+
+
+
+
+
+二叉树 、 红黑树（平衡二叉树）、B树  B+树

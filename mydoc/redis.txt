@@ -1,0 +1,58 @@
+redis:
+1.redis内部数据结构：http://zhangtielei.com/posts/blog-redis-dict.html
+2.redis 实现分布式锁：https://www.zhihu.com/question/300767410/answer/1698980571
+3.缓存穿透（不存在的key）、击穿(热点key到期)、雪崩（批量key 同一时间到期）以及 解决方案 https://blog.csdn.net/kongtiao5/article/details/82771694   https://blog.csdn.net/SmartCodeTech/article/details/116801352
+4.redis集群搭建的三种方式 单节点实例、主从模式（master/slaver）、sentinel模式、cluster模式 https://blog.csdn.net/e3002/article/details/100691472
+5.CAP 极简单解释 一致性、可用性、分区容忍  https://blog.csdn.net/dc_726/article/details/42784237
+6.redis 锁  incr  setnx set
+7.redis 令牌桶限流 Rate  怎么实现的 ，，   多维度限流、  漏桶算法和令牌桶算法
+7.1.  guava限流器RateLimiter原理 平滑预热限流 https://zhuanlan.zhihu.com/p/60979444
+7.2.springCloud多维度限流 ：  https://blog.csdn.net/sdjxgd/article/details/105201057
+8.lettuce、jedis 比较
+9.跳表怎么实现的  https://jingyan.baidu.com/article/1709ad80c703200635c4f01d.html    https://www.cnblogs.com/lfri/p/9991925.html
+10redis 哨兵模式、分片
+11.redis 大key怎么解决   string特别长  https://blog.csdn.net/huxianbo0807/article/details/102912172
+12.详解Redis中两种持久化机制RDB和AOF   https://baijiahao.baidu.com/s?id=1654694618189745916&wfr=spider&for=pc
+13.令牌桶算法、漏桶算法 https://zhuanlan.zhihu.com/p/165006444
+14.为什么Redis是单线程？为什么能处理大并发量？(举例不错)   https://blog.csdn.net/gb4215287/article/details/92797563
+15.Redis的pub/sub机制
+6.redis 常见面试题 https://blog.csdn.net/sufu1065/article/details/106760804
+16.redis分布式怎么计算key的  https://blog.csdn.net/u014513171/article/details/92803285
+17.redis key 过期策略   https://blog.csdn.net/a_bang/article/details/52986935
+18.解决redis分布式锁过期时间到了业务没执行完问题   https://blog.csdn.net/wutengfei_java/article/details/100699538   Redis分布式锁的缺点    redisson的redLock实现
+19.https://blog.csdn.net/turbo_zone/article/details/83422215     https://mp.weixin.qq.com/s/y_Uw3P2Ll7wvk_j5Fdlusw  redis分布式锁原理
+20.何时使用Lua
+Redis支持WATCH/MULTI/EXEC这样的块，能进行一组操作，也能一起提交执行，看起来与Lua有重叠。应该如何进行选择？MULT块中所有操作独立，但在Lua中，后面的操作能依赖前面操作的执行结果。同时使用Lua脚本还能够避免WATCH使用后竞争条件引起客户端反应变慢的情况。
+在RedisGreen（译注:国外一家专门提供Redis主机的服务商），我们看到许多应用使用Lua的同时也使用MULTI/EXEC，但两者但不是替代关系。许多成功的Lua脚本都很小，仅仅实现一个你的应用需要而Redis命令中没有单一的功能。
+21.redis的高并发  https://www.jianshu.com/p/1e6255213be9
+22.redis怎么实现延时队列      https://www.jianshu.com/p/e958e8590020/   利用job, 扫描 zet    放入list中实现延迟队列
+槽位
+
+23.redis 本身的事务怎么使用
+
+
+2.redis 跳表实现原理
+
+ dict
+sds
+ziplist
+quicklist
+skiplist
+
+
+3.ZSet底层如何实现  https://www.jianshu.com/p/360627bd04e5
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

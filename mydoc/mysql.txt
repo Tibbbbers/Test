@@ -1,0 +1,45 @@
+mysql:
+1.什么情况下索引失效  https://www.cnblogs.com/wdss/p/11186411.html
+2.myIsam innodb 通过索引找数据原理 https://blog.csdn.net/u013308490/article/details/83001060
+3.b树  b+树区别  https://blog.csdn.net/weixin_42228338/article/details/97684517
+4.innodb事务的四大特性 、四种隔离级别、  脏读、不可重复读、幻读     https://blog.csdn.net/Wang_junling/article/details/103042491   https://www.huaweicloud.com/articles/ffc11869bfea5f6793631f9b30369be0.html
+5.mysql 常见面试题 https://www.cnblogs.com/williamjie/p/11081592.html
+6.mysql 事务 https://www.cnblogs.com/wyaokai/p/10921323.html
+6.1mysql怎么保证事务 ：
+6.2 mysql怎么保证原子性，一致性，隔离性，持久性
+7.mysql 锁 https://zhuanlan.zhihu.com/p/150101667
+8.mysql为什么不用 select * https://zhuanlan.zhihu.com/p/151329049
+9.mysql间隙锁  和 不可重复度 解决 幻读
+10.MVCC实现原理     https://blog.csdn.net/zzti_erlie/article/details/110454543    在每一行数据中额外保存两个隐藏的列：当前行创建时的版本号和删除时的版本号（可能为空，其实还有一列称为回滚指针，用于事务回滚
+10.1 脏读、不可重复度、幻读概念  https://www.cnblogs.com/zxgl/archive/2017/07/28/7250662.html
+     1.脏读
+   事务A向表中插入了一条数据，此时事务A还没有提交，此时查询语句能把这条数据查询出来，这种现现象称为脏读；脏读比较好理解
+    2.不可重复读
+   一个事务A第一次读取的结果之后，  另外一个事务B更新了A事务读取的数据，A事务在第二次读取的结果和第一次读取的结果不一样这种现象称为不可重复读
+    3.幻读
+   事务A更新表里面的所有数据，这时事务B向表中插入了一条数据，这时事务A第一次的查询结果和第二次的查询结果不一致，这种现象我称为幻读。
+
+
+11.mysql limit分页优化查询
+12.mysql分库分表
+13.mysql  redis  Kafka最大连接数  最大并发数、
+14.MySQL 是如何保证一致性、原子性和持久性的！ https://www.cnblogs.com/alexgl2008/articles/12935751.html
+15.MYSQL怎么保证实现4种隔离级别的   https://blog.csdn.net/baihualindesu/article/details/100375244
+16.MYSQL怎么实现事务的
+17.explain使用解析   https://segmentfault.com/a/1190000008131735
+18.binlog，redo log，undo log区别  https://blog.csdn.net/mydriverc2/article/details/50629599
+19.mysql关于or的索引问题  https://www.jianshu.com/p/6e90e38d2b67
+20.联合索引原理 采用B+树实现，每个节点含有多个关键字，排序时按照多个关键字来排序。
+21.mysql 怎么实现主从同步  https://www.cnblogs.com/hellxz/p/8378601.html
+22.间隙锁原理 https://blog.csdn.net/qq_19734597/article/details/81030920
+
+22.事务隔离级别：   https://tech.meituan.com/2014/08/20/innodb-lock.html
+
+23.事务隔离级别为什么用RC https://blog.csdn.net/qq_34486648/article/details/121678690
+
+24.《mysql 分布式锁_基于Mysql实现分布式锁》, 一起来围观吧 https://blog.csdn.net/weixin_28875235/article/details/113122641?utm_source=app&app_version=4.8.0
+
+3. 索引最左匹配，b+tree搜索过程
+
+1. 数据库范式
+4. 分库分表

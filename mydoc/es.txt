@@ -1,0 +1,10 @@
+Es:
+1.es中put与post区别：
+PUT只会将json数据都进行替换, POST只会更新相同字段的值
+PUT与DELETE都是幂等性操作, 即不论操作多少次, 结果都一样
+
+2.https://zhuanlan.zhihu.com/p/76485252   聊聊 Elasticsearch 的倒排索引
+
+
+
+3.2021年春招Elasticsearch面试题     https://blog.csdn.net/mzl87/article/details/115954722

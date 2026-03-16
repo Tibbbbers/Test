@@ -1,0 +1,310 @@
+1.两数之和
+private int[] getSum(int[] arr, int target) {
+    for (int i = 0; i <= arr.length - 1; i++) {
+        for (int j = i + 1; j <= arr.length - 1; j++) {
+            if (arr[i] + arr[j] == target) {
+                return new int[]{i, j};
+            }
+        }
+    }
+    return new int[]{0};
+}
+
+public int[] twoSum(int[] nums, int target) {
+    Map<Integer, Integer> hashtable = new HashMap<>();
+    for (int i = 0; i < nums.length; ++i) {
+        if (hashtable.containsKey(target - nums[i])) {
+            return new int[]{hashtable.get(target - nums[i]), i};
+        }
+        hashtable.put(nums[i], i);
+    }
+    return new int[0];
+}
+
+39.组合总和
+public static List<List<Integer>> combinationSum(int[] arr, int target) {
+    List<List<Integer>> result = new ArrayList<>();
+    List<Integer> combine = new ArrayList<>();
+    dfs(arr, target, result, combine, 0);
+    return result;
+
+
+}
+public static void dfs(int[] arr, int target, List<List<Integer>> result, List<Integer> combine, int idx) {
+    if (idx == arr.length) {
+        return;
+    }
+    if (target == 0) {
+        result.add(new ArrayList<>(combine));
+        return;
+    }
+    //直接跳过
+    dfs(arr, target, result, combine, idx + 1);
+    //选择当前数
+    if (target - arr[idx] >= 0) {
+        combine.add(arr[idx]);
+        dfs(arr, target - arr[idx], result, combine, idx);
+        combine.remove(combine.size() - 1);
+    }
+}
+
+排序 + 回溯
+private List<List<Integer>> res = new ArrayList<>();
+public List<List<Integer>> combinationSum(int[] candidates, int target) {
+    List<Integer> path = new ArrayList<>();
+    Arrays.sort(candidates);
+    backtrack(path, candidates, target, 0, 0);
+    return res;
+}
+private void backtrack(List<Integer> path, int[] candidates, int target, int sum, int begin) {
+    if (sum == target) {
+        res.add(new ArrayList<>(path));
+        return;
+    }
+    for (int i = begin; i < candidates.length; i++) {
+        int rs = candidates[i] + sum;
+        if (rs <= target) {
+            path.add(candidates[i]);
+            backtrack(path, candidates, target, rs, i);
+            path.remove(path.size() - 1);
+        } else {
+            break;
+        }
+    }
+}
+
+
+
+40.组合总和 II
+
+
+215. 数组中的第K个最大元素
+快排：
+class Solution {
+    Random random = new Random();
+
+    public int findKthLargest(int[] nums, int k) {
+        return quickSelect(nums, 0, nums.length - 1, nums.length - k);
+    }
+
+    public int quickSelect(int[] a, int l, int r, int index) {
+        int q = randomPartition(a, l, r);
+        if (q == index) {
+            return a[q];
+        } else {
+            return q < index ? quickSelect(a, q + 1, r, index) : quickSelect(a, l, q - 1, index);
+        }
+    }
+
+    public int randomPartition(int[] a, int l, int r) {
+        int i = random.nextInt(r - l + 1) + l;
+        swap(a, i, r);
+        return partition(a, l, r);
+    }
+
+    public int partition(int[] a, int l, int r) {
+        int x = a[r], i = l - 1;
+        for (int j = l; j < r; ++j) {
+            if (a[j] <= x) {
+                swap(a, ++i, j);
+            }
+        }
+        swap(a, i + 1, r);
+        return i + 1;
+    }
+
+    public void swap(int[] a, int i, int j) {
+        int temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
+    }
+}
+
+
+基于堆排序的选择方法：
+class Solution {
+    public int findKthLargest(int[] nums, int k) {
+        int heapSize = nums.length;
+        buildMaxHeap(nums, heapSize);
+        for (int i = nums.length - 1; i >= nums.length - k + 1; --i) {
+            swap(nums, 0, i);
+            --heapSize;
+            maxHeapify(nums, 0, heapSize);
+        }
+        return nums[0];
+    }
+
+
+    public void buildMaxHeap(int[] a, int heapSize) {
+        for (int i = heapSize / 2; i >= 0; --i) {
+            maxHeapify(a, i, heapSize);
+        }
+    }
+
+
+    public void maxHeapify(int[] a, int i, int heapSize) {
+        int l = i * 2 + 1, r = i * 2 + 2, largest = i;
+        if (l < heapSize && a[l] > a[largest]) {
+            largest = l;
+        }
+        if (r < heapSize && a[r] > a[largest]) {
+            largest = r;
+        }
+        if (largest != i) {
+            swap(a, i, largest);
+            maxHeapify(a, largest, heapSize);
+        }
+    }
+
+
+    public void swap(int[] a, int i, int j) {
+        int temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
+    }
+}
+
+
+
+快速排序
+public int getMiddle(int[] list, int low, int high) {
+    int tmp = list[low];//数组的第一个作为中轴
+    while (low < high) {
+        while (low < high && list[high] >= tmp) {
+            high--;
+        }
+        list[low] = list[high];//比中轴小的记录移到低端
+        while (low < high && list[low] < tmp) {
+            low++;
+        }
+        list[high] = list[low];//比中轴大的记录移到高端
+    }
+    list[low] = tmp;//中轴记录到尾
+    return low;//返回中轴的位置
+}
+public void _quickSort(int[] list, int low, int high) {
+    if (low < high) {
+        int middle = getMiddle(list, low, high);//将list数组进行一分为二
+        _quickSort(list, low, middle - 1);//对低子表进行递归排序
+        _quickSort(list, middle + 1, high);//对高子表进行递归排序
+    }
+}
+
+
+15. 三数之和等于0
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {// 总时间复杂度：O(n^2)
+        List<List<Integer>> ans = new ArrayList<>();
+        if (nums == null || nums.length <= 2) return ans;
+
+        Arrays.sort(nums); // O(nlogn)
+
+        for (int i = 0; i < nums.length - 2; i++) { // O(n^2)
+            if (nums[i] > 0) break; // 第一个数大于 0，后面的数都比它大，肯定不成立了
+            if (i > 0 && nums[i] == nums[i - 1]) continue; // 去掉重复情况
+            int target = -nums[i];
+            int left = i + 1, right = nums.length - 1;
+            while (left < right) {
+                if (nums[left] + nums[right] == target) {
+                    ans.add(new ArrayList<>(Arrays.asList(nums[i], nums[left], nums[right])));
+
+                    // 现在要增加 left，减小 right，但是不能重复，比如: [-2, -1, -1, -1, 3, 3, 3], i = 0, left = 1, right = 6, [-2, -1, 3] 的答案加入后，需要排除重复的 -1 和 3
+                    left++; right--; // 首先无论如何先要进行加减操作
+                    while (left < right && nums[left] == nums[left - 1]) left++;
+                    while (left < right && nums[right] == nums[right + 1]) right--;
+                } else if (nums[left] + nums[right] < target) {
+                    left++;
+                } else {  // nums[left] + nums[right] > target
+                    right--;
+                }
+            }
+        }
+        return ans;
+    }
+}
+
+
+
+53. 最大子数组和
+//动态规划
+public int maxSubArray(int[] nums) {
+    int pre = 0, maxAns = nums[0];
+    for (int x : nums) {
+        pre = Math.max(pre + x, x);
+        maxAns = Math.max(maxAns, pre);
+    }
+    return maxAns;
+}
+
+//分治
+public class Status {
+    public int lSum, rSum, mSum, iSum;
+
+
+    public Status(int lSum, int rSum, int mSum, int iSum) {
+        this.lSum = lSum;
+        this.rSum = rSum;
+        this.mSum = mSum;
+        this.iSum = iSum;
+    }
+}
+
+
+public int maxSubArray(int[] nums) {
+    return getInfo(nums, 0, nums.length - 1).mSum;
+}
+
+
+public Status getInfo(int[] a, int l, int r) {
+    if (l == r) {
+        return new Status(a[l], a[l], a[l], a[l]);
+    }
+    int m = (l + r) >> 1;
+    Status lSub = getInfo(a, l, m);
+    Status rSub = getInfo(a, m + 1, r);
+    return pushUp(lSub, rSub);
+}
+
+
+public Status pushUp(Status l, Status r) {
+    int iSum = l.iSum + r.iSum;
+    int lSum = Math.max(l.lSum, l.iSum + r.lSum);
+    int rSum = Math.max(r.rSum, r.iSum + l.rSum);
+    int mSum = Math.max(Math.max(l.mSum, r.mSum), l.rSum + r.lSum);
+    return new Status(lSum, rSum, mSum, iSum);
+}
+
+
+剑指 Offer 63. 股票的最大利润
+public static int maxProfit2(int prices[]) {
+    int minprice = Integer.MAX_VALUE;
+    int maxprofit = 0;
+    for (int i = 0; i < prices.length; i++) {
+        if (prices[i] < minprice) {
+            minprice = prices[i];
+        } else if (prices[i] - minprice > maxprofit) {
+            maxprofit = prices[i] - minprice;
+        }
+    }
+    return maxprofit;
+}
+
+300. 最长递增子序列
+public int lengthOfLIS(int[] nums) {
+    if (nums.length == 0) {
+        return 0;
+    }
+    int[] dp = new int[nums.length];
+    dp[0] = 1;
+    int maxans = 1;
+    for (int i = 1; i < nums.length; i++) {
+        dp[i] = 1;
+        for (int j = 0; j < i; j++) {
+            if (nums[i] > nums[j]) {
+                dp[i] = Math.max(dp[i], dp[j] + 1);
+            }
+        }
+        maxans = Math.max(maxans, dp[i]);
+    }
+    return maxans;
+}

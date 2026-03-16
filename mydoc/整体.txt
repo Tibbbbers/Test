@@ -1,0 +1,594 @@
+1. 数据库范式
+2. 事务、锁、MVCC
+3. 索引最左匹配，b+tree搜索过程
+4. 分库分表
+5. 查询优化方法
+
+mysql:
+1.什么情况下索引失效  https://www.cnblogs.com/wdss/p/11186411.html
+2.myIsam innodb 通过索引找数据原理 https://blog.csdn.net/u013308490/article/details/83001060
+3.b树  b+树区别  https://blog.csdn.net/weixin_42228338/article/details/97684517
+4.innodb事务的四大特性 、四种隔离级别、  脏读、不可重复读、幻读     https://blog.csdn.net/Wang_junling/article/details/103042491   https://www.huaweicloud.com/articles/ffc11869bfea5f6793631f9b30369be0.html
+5.mysql 常见面试题 https://www.cnblogs.com/williamjie/p/11081592.html
+6.mysql 事务 https://www.cnblogs.com/wyaokai/p/10921323.html
+6.1mysql怎么保证事务 ：
+6.2 mysql怎么保证原子性，一致性，隔离性，持久性
+7.mysql 锁 https://zhuanlan.zhihu.com/p/150101667
+8.mysql为什么不用 select * https://zhuanlan.zhihu.com/p/151329049
+9.mysql间隙锁  和 不可重复度 解决 幻读
+10.MVCC实现原理     https://blog.csdn.net/zzti_erlie/article/details/110454543    在每一行数据中额外保存两个隐藏的列：当前行创建时的版本号和删除时的版本号（可能为空，其实还有一列称为回滚指针，用于事务回滚
+10.1 脏读、不可重复度、幻读概念  https://www.cnblogs.com/zxgl/archive/2017/07/28/7250662.html
+11.mysql limit分页优化查询
+12.mysql分库分表
+13.mysql  redis  Kafka最大连接数  最大并发数、
+14.MySQL 是如何保证一致性、原子性和持久性的！ https://www.cnblogs.com/alexgl2008/articles/12935751.html
+15.MYSQL怎么保证实现4种隔离级别的   https://blog.csdn.net/baihualindesu/article/details/100375244
+16.MYSQL怎么实现事务的
+17.explain使用解析   https://segmentfault.com/a/1190000008131735
+18.binlog，redo log，undo log区别  https://blog.csdn.net/mydriverc2/article/details/50629599
+19.mysql关于or的索引问题  https://www.jianshu.com/p/6e90e38d2b67
+20.联合索引原理 采用B+树实现，每个节点含有多个关键字，排序时按照多个关键字来排序。
+21.mysql 怎么实现主从同步  https://www.cnblogs.com/hellxz/p/8378601.html
+22.间隙锁原理 https://blog.csdn.net/qq_19734597/article/details/81030920
+
+
+23.事务隔离级别，且为什么用RC https://tech.meituan.com/2014/08/20/innodb-lock.html
+
+24.《mysql 分布式锁_基于Mysql实现分布式锁》, 一起来围观吧 https://blog.csdn.net/weixin_28875235/article/details/113122641?utm_source=app&app_version=4.8.0
+
+
+网络
+1.https://www.cnblogs.com/51benpao/p/12984951.html   一次访问网页请求的全过程详解
+2.
+
+mongo:
+1.索引原理
+2.mongo/mysql 怎么选择
+
+性能
+1.线上多少台机器
+2.每台机器qps多少
+3.怎么算每台机器qps
+4.堆外缓存怎么使用
+5.
+
+
+kafka:
+1.如何保证不丢，不重复消费数据https://blog.csdn.net/u010627840/article/details/76435385
+2.为什么kafka速度那么快  https://www.cnblogs.com/binyue/p/10308754.html
+3.常见kafka 面试题 https://blog.csdn.net/qq_28900249/article/details/90346599
+4.Kafka、RocketMQ、RabbitMQ的优劣势比较
+5.不在一个区内kafka有序
+6.kafka pull特点   消费者从broker中pul 消息  https://www.cnblogs.com/programb/p/12906702.html
+    Pull模式下，consumer就可以根据自己的消费能力去决定这些策略。Pull有个缺点是，如果broker没有可供消费的消息，将导致consumer不断在循环中轮询，直到新消息到t达。为了避免这点，Kafka有个参数可以让consumer阻塞知道新消息到达(当然也可以阻塞知道消息的数量达到某个特定的量这样就可以批量发
+7.消息堆积怎么处理。  增加机器是否一定有效  https://www.cnblogs.com/bigdatalearnshare/p/14278093.html
+8.为什么使用Kafka、ActiveMQ、RabbitMQ、RocketMQ 消息队列？  https://blog.csdn.net/shuai825644975/article/details/97245385
+
+redis:
+1.redis内部数据结构：http://zhangtielei.com/posts/blog-redis-dict.html
+2.redis 实现分布式锁：https://www.zhihu.com/question/300767410/answer/1698980571
+3.缓存穿透（不存在的key）、击穿(热点key到期)、雪崩（批量key 同一时间到期）以及 解决方案 https://blog.csdn.net/kongtiao5/article/details/82771694   https://blog.csdn.net/SmartCodeTech/article/details/116801352
+4.redis集群搭建的三种方式 单节点实例、主从模式（master/slaver）、sentinel模式、cluster模式 https://blog.csdn.net/e3002/article/details/100691472
+5.CAP 极简单解释 一致性、可用性、分区容忍  https://blog.csdn.net/dc_726/article/details/42784237
+6.redis 锁  incr  setnx set
+7.redis 令牌桶限流 Rate  怎么实现的 ，，   多维度限流、  漏桶算法和令牌桶算法
+7.1.  guava限流器RateLimiter原理 平滑预热限流 https://zhuanlan.zhihu.com/p/60979444
+7.2.springCloud多维度限流 ：  https://blog.csdn.net/sdjxgd/article/details/105201057
+8.lettuce、jedis 比较
+9.跳表怎么实现的  https://jingyan.baidu.com/article/1709ad80c703200635c4f01d.html    https://www.cnblogs.com/lfri/p/9991925.html
+10redis 哨兵模式、分片
+11.redis 大key怎么解决   string特别长  https://blog.csdn.net/huxianbo0807/article/details/102912172
+12.详解Redis中两种持久化机制RDB和AOF   https://baijiahao.baidu.com/s?id=1654694618189745916&wfr=spider&for=pc
+13.令牌桶算法、漏桶算法 https://zhuanlan.zhihu.com/p/165006444
+14.为什么Redis是单线程？为什么能处理大并发量？(举例不错)   https://blog.csdn.net/gb4215287/article/details/92797563
+15.Redis的pub/sub机制
+6.redis 常见面试题 https://blog.csdn.net/sufu1065/article/details/106760804
+16.redis分布式怎么计算key的
+17.redis key 过期策略   https://blog.csdn.net/a_bang/article/details/52986935
+18.解决redis分布式锁过期时间到了业务没执行完问题   https://blog.csdn.net/wutengfei_java/article/details/100699538   Redis分布式锁的缺点    redisson的redLock实现
+19.https://blog.csdn.net/turbo_zone/article/details/83422215     https://mp.weixin.qq.com/s/y_Uw3P2Ll7wvk_j5Fdlusw  redis分布式锁原理
+20.何时使用Lua
+Redis支持WATCH/MULTI/EXEC这样的块，能进行一组操作，也能一起提交执行，看起来与Lua有重叠。应该如何进行选择？MULT块中所有操作独立，但在Lua中，后面的操作能依赖前面操作的执行结果。同时使用Lua脚本还能够避免WATCH使用后竞争条件引起客户端反应变慢的情况。
+在RedisGreen（译注:国外一家专门提供Redis主机的服务商），我们看到许多应用使用Lua的同时也使用MULTI/EXEC，但两者但不是替代关系。许多成功的Lua脚本都很小，仅仅实现一个你的应用需要而Redis命令中没有单一的功能。
+21.redis的高并发  https://www.jianshu.com/p/1e6255213be9
+22.redis怎么实现延时队列
+槽位
+
+
+
+压测：
+load1  load5代表啥意思  https://www.cnblogs.com/wuchanming/p/9294678.html
+
+限流框架：
+sentinel   https://blog.csdn.net/qq_42972645/article/details/105731763
+hystrix
+resilience4j
+
+熔断、降级具体怎么做的
+
+怎么解决线上一台服务器异常    发现到解决
+
+压测jmeter 怎么使用的
+
+多线程：
+1.线程池7个参数
+2.线程池核心线程数估算 （IO密集型 2n+1、CPU密集型 n）https://www.cnblogs.com/651434092qq/p/14240406.html
+3.线程的五种状态 新建(new)-> 可运行(runnable)->运行(running)->阻塞(block)-> 死亡状态（Dead）     https://www.cnblogs.com/moonlightml/p/9777205.html
+4.多线程面试题 https://blog.csdn.net/tanmomo/article/details/99671622
+5.ThreadLocal面试题原理 https://zhuanlan.zhihu.com/p/140433592
+
+Synchronized
+1.Synchronized同步静态方法和非静态方法总结  https://blog.csdn.net/u010842515/article/details/65443084
+2.synchronized加锁范围  静态方法、非静态方法、代码块
+3.synchronized 是非公平锁  https://www.zhihu.com/question/48140804
+4.Synchronized与ReentrantLock区别总结https://blog.csdn.net/zxd8080666/article/details/83214089
+5.同一个类里面两个synchronized方法，两个线程同时访问的问题 https://blog.csdn.net/github_37130188/article/details/97638651
+
+
+jvm:
+1.jvm内存模型  方法区、堆    本地方法栈、虚拟机栈、程序计数器  https://zhuanlan.zhihu.com/p/101495810
+2.OutOfMemoryError出现场景以及解决方式
+3.StackOverFlowError 出现场景以及解决方式
+4.java 内存泄漏定位与分析 https://blog.csdn.net/kingmax54212008/article/details/51858923
+5.分代回收：  新生代采用复制算法、老年代采用标记-清理、标记-整理
+6.方法区存储已被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据
+7.垃圾回收器种类  Serial、Serial Old、ParNew、Parallel Scavenge、Parallel Old、CMS、G1
+8.类的生命周期  加载-链接（验证-准备-解析）-初始化
+9.类加载机制 https://blog.csdn.net/weixin_40236948/article/details/88072698
+10.CMS与G1区别   原理  https://www.cnblogs.com/rgever/p/9534857.html
+
+jvm调优：
+目前配置参数
+
+mongo:
+1.索引原理
+2.索引失效
+3.mongo与mysql选择区别
+
+spring:
+1.有哪些不同类型的 IOC（依赖注入）方式
+2.@Transactional实现原理 https://blog.csdn.net/qq_20597727/article/details/84868035
+3.aop实现原理  https://blog.csdn.net/qq_20597727/article/details/84800176
+4.私有方法或者static方法上加@Transactional是否有作用
+5.spring中的@Transactional 放在类级别 和 方法级别 上有什么不同？   https://blog.csdn.net/qq_15325579/article/details/77678235
+6.Transactional  方法套方法能不能生效  为什么  由于使用Spring AOP代理造成的，因为只有当事务方法被当前类以外的代码调用时，才会由Spring生成的代理对象来管理。        https://www.cnblogs.com/ynyhl/p/12066530.html
+7.bean的注入过程  https://www.cnblogs.com/swek/articles/4344397.html    https://blog.csdn.net/qq36846776/article/details/116265843
+8.spring注入bean的几种方式：https://zhuanlan.zhihu.com/p/91218997  1.autowire 注解 2.2.set方法注入  3.3.构造器注入
+9.动态代理实现方式 cgliob
+10.CGLib动态代理原理及实现   https://www.iteye.com/blog/songbo-mail-126-com-968792
+11.三级缓存解决循环依赖  https://blog.csdn.net/weixin_45596022/article/details/110351170   https://zhuanlan.zhihu.com/p/84267654
+12.cglib和jdk动态代理区别有哪些   https://www.html.cn/qa/other/22646.html
+13.多数据源事务https://blog.csdn.net/u012345283/article/details/47059537
+
+springmvc：
+1.springMvc流程
+1、  用户发送请求至前端控制器DispatcherServlet。
+2、  DispatcherServlet收到请求调用HandlerMapping处理器映射器。
+3、  处理器映射器找到具体的处理器(可以根据xml配置、注解进行查找)，生成处理器对象及处理器拦截器(如果有则生成)一并返回给DispatcherServlet。
+4、  DispatcherServlet调用HandlerAdapter处理器适配器。
+5、  HandlerAdapter经过适配调用具体的处理器(Controller，也叫后端控制器)。
+6、  Controller执行完成返回ModelAndView。
+7、  HandlerAdapter将controller执行结果ModelAndView返回给DispatcherServlet。
+8、  DispatcherServlet将ModelAndView传给ViewReslover视图解析器。
+9、  ViewReslover解析后返回具体View。
+10、DispatcherServlet根据View进行渲染视图（即将模型数据填充至视图中）。
+11、 DispatcherServlet响应用户。
+
+事务流程 ：
+1.所用的所有类
+
+
+
+
+
+springcloud:
+
+
+zk:
+1.zk工作原理、核心机制：https://blog.csdn.net/fenglongmiao/article/details/79305010
+2.四种类型的节点： PERSISTENT-持久化目录节点、PERSISTENT_SEQUENTIAL-持久化顺序编号目录节点、EPHEMERAL-临时目录节点、EPHEMERAL_SEQUENTIAL-临时顺序编号目录节点
+3.zk实现分布式锁 https://blog.csdn.net/qq_35190492/article/details/105352672
+4.zk保证了  分区容忍性、一致性  （为什么没有可用性）
+5.zk选举机制
+6.zk怎么实现负载均衡
+7.zk上有问题节点实战   7.1Zookeeper的崩溃恢复问题  https://blog.csdn.net/frockee/article/details/83117701
+                                        7.2.Zookeeper集群的崩溃恢复   https://blog.csdn.net/zyxhangiian123456789/article/details/106813472
+8.zk的选举过程
+
+dubbo:
+1.Dubbo架构与底层实现-阿里云开发者社区   https://developer.aliyun.com/article/38380
+2.rpc框架原理：https://www.cnblogs.com/xiaoqi/p/java-rpc.html
+3.如果断了dubbo宕机   还会consumer 获取到ip么
+
+RPC框架:
+1.为什么用 RPC，不用 HTTP
+首先需要指正，这两个并不是并行概念。RPC 是一种设计，就是为了解决不同服务之间的调用问题，完整的 RPC 实现一般会包含有 传输协议 和 序列化协议 这两个。
+而 HTTP 是一种传输协议，RPC 框架完全可以使用 HTTP 作为传输协议，也可以直接使用 TCP，使用不同的协议一般也是为了适应不同的场景。
+使用 TCP 和使用 HTTP 各有优势：
+传输效率：
+* TCP，通常自定义上层协议，可以让请求报文体积更小
+* HTTP：如果是基于HTTP 1.1 的协议，请求中会包含很多无用的内容
+性能消耗，主要在于序列化和反序列化的耗时
+* TCP，可以基于各种序列化框架进行，效率比较高
+* HTTP，大部分是通过 json 来实现的，字节大小和序列化耗时都要更消耗性能
+跨平台：
+* TCP：通常要求客户端和服务器为统一平台
+* HTTP：可以在各种异构系统上运行
+总结：
+RPC 的 TCP 方式主要用于公司内部的服务调用，性能消耗低，传输效率高。HTTP主要用于对外的异构环境，浏览器接口调用，APP接口调用，第三方接口调用等。
+
+2.一次完整的rpc流程 https://blog.csdn.net/qq_30353203/article/details/113462634
+
+
+
+限流框架：
+1.Sentinel限流实现原理 https://www.cnblogs.com/wuzhenzhao/p/11453649.html
+
+
+分布式事务：
+seata
+
+netty原理：
+
+
+mongo 索引原理
+
+
+linux 常用命令  操作文件
+1.查看某个进程的线程
+
+Es:
+1.es中put与post区别：
+PUT只会将json数据都进行替换, POST只会更新相同字段的值
+PUT与DELETE都是幂等性操作, 即不论操作多少次, 结果都一样
+
+2.https://zhuanlan.zhihu.com/p/76485252   聊聊 Elasticsearch 的倒排索引
+
+couchbase:
+1. couchbase与其他nosql数据库的区别  https://blog.csdn.net/weixin_34037515/article/details/91467879
+
+
+spring事务：
+
+定时任务原理：
+1.quartz
+2.cron 表达式
+3.分布式定时任务：https://blog.csdn.net/mrleeapple/article/details/87805182
+4.Java 定时任务实现原理详解   https://blog.csdn.net/u013332124/article/details/79603943
+
+分布式锁：
+1.利用redis 实现分布式锁  https://www.zhihu.com/question/300767410/answer/1698980571
+2.利用zk实现分布式锁  https://blog.csdn.net/qq_35190492/article/details/105352672
+
+java:
+1.锁
+2.hashmap
+3.java泛型理解和深入  https://zhuanlan.zhihu.com/p/40925435
+4.https://blog.csdn.net/o9109003234/article/details/106247751
+HashMap 允许null hashtable 不允许为null
+为什么hashMap需要2的幂作为初始容量？而hashtable选择11作为默认初始容量？
+5.Hashmap-存取数据的过程   https://blog.csdn.net/bll1992/article/details/95603007
+5.1为什么hashmap不是线程安全的  https://blog.csdn.net/weixin_43092168/article/details/89791106
+6.静态内部类与内部类的区别 https://blog.csdn.net/wangzhibo666/article/details/87857355
+7.注解 Retention  、  Target
+8.AQS   https://zhuanlan.zhihu.com/p/86072774
+8.红黑树原理 https://www.jianshu.com/p/37c845a5add6
+9.java8 stream原理 与collect有啥不同
+10.超大并发量下 怎么只取前1000个请求，
+11.控制库存不被超卖
+12.发送上亿的优惠券解决方案
+13.AQS 与 syncronize区别
+    13.1AQS详细源码， 例如 countDownLatch的countDown方法原理
+14.死锁出现的场景以及预防  https://blog.csdn.net/hd12370/article/details/82814348
+14.1 如何判断我们写的程序是有死锁  https://www.cnblogs.com/zhangmingda/p/14691359.html
+      jps -l 命令来获取对应的进程pid:
+    获取到对应的Pid之后用jstack命令来查看是否有死锁：
+    jstack -l 26640
+
+15.怎么自定义异常
+16.CAP
+17.死锁，死锁的四个必要条件以及处理策略   https://blog.csdn.net/wljliujuan/article/details/79614019
+        产生死锁的四个必要条件 互斥条件  不可剥夺条件  请求与保持条件 循环等待条件
+18AQS与synchronize 区别 https://blog.csdn.net/u012373815/article/details/111035234
+19.序列化有几种方式
+    1.Java原生序列化
+    2.Hessian 序列化
+    3.Json序列化
+20.java8新特性
+21.stream foreach 是优化了么’
+22.java new一个对象发生了什么  https://zhuanlan.zhihu.com/p/57515223?utm_source=wechat_session&utm_medium=social&utm_oi=77468962652160
+23.JAVA并发（3）—线程运行时发生GC，会回收ThreadLocal弱引用的key吗？  https://www.jianshu.com/p/78ac437a03bc
+24.countdownlatch/ cycle
+25.Hessian的缺点   https://blog.csdn.net/wodediqizhang/article/details/51603512    Hessian知识学习总结（一）——基础知识
+26.Guava Cache本地缓存总结 https://www.cnblogs.com/boothsun/p/5848143.html    https://blog.csdn.net/joeyon1985/article/details/40302699
+27.最佳内存缓存框架Caffeine   https://www.cnblogs.com/cjsblog/p/11517761.html
+28.juc包常用类
+29.解释下动态代理
+30.java锁机制：浅谈偏向锁、轻量级锁、重量级锁    https://www.jianshu.com/p/36eedeb3f912
+31.信号量 、countdownlatch 、cyclibirrer
+32.类加载 真正理解线程上下文类加载器（多案例分析）    https://blog.csdn.net/yangcheng33/article/details/52631940
+
+双亲委派模式的破坏者：线程上下文类加载器
+
+
+本地缓存：
+guava cache
+ehcache
+
+
+
+
+linux:
+1.linux终端输出内容到文件 https://www.linuxprobe.com/linux-output-file.html
+2.Linux下统计出现次数最多的指定字段值 https://blog.csdn.net/saimoeww/article/details/84189317
+  cat /Users/heyong/Desktop/test1.txt | awk '{print $4}' | cut -c 8- | sed "s/'//g" | sort | uniq -c
+
+
+持久层：
+hibernate：
+
+mybatis:
+怎么防止sql注入  https://blog.csdn.net/weixin_45525005/article/details/108124612
+
+
+计算机网络：
+1.socket编程
+2.长链接短链接
+3.dubbo
+
+
+
+
+
+总结类：
+1.https://blog.csdn.net/xiamiflying/article/details/82081202   java面试题
+
+
+
+
+1.一致性hash
+2.redis 跳表实现原理
+3.dubbo底层原理、序列化原理。 rpc底层原理
+4.mongo 失效索引
+5.zk 实现分布式锁
+6.为什么用kafka kafka 底层原理，   rabbitMq 优缺点底层原理    kafka解决重复消费方法
+7.spring Boot springmvc区别
+8.rpc底层实现原理
+
+
+
+9.分布式定时任务
+
+
+
+
+暴击问题：
+1.oom怎么发现解决     https://www.cnblogs.com/c-xiaohai/p/12489336.html
+   1.使用dmesg命令查看系统日志    dmesg |grep -E ‘kill | oom | out of memory’
+   2.这时候，需要启动项目，使用ps命令查看进程
+   3.接着使用top命令
+   4. jstat -gcutil 8968 500 5 表示每500毫秒打印一次Java堆状况（各个区的容量、使用容量、gc时间等信息），打印5次
+   5.使用jmap命令查看   jmap -histo 1137    打印出当前堆中所有每个类的实例数量和内存占用
+   6.把当前堆内存的快照转储到dumpfile_jmap.hprof文件中，然后可以对内存快照进行分析
+   7.jmap -dump:format=b,file=D:/log/jvm/dumpfile_jmap.hprof 20886
+   8.可以用MAT工具，或者是Eclipse MAT的内存分析插件，来对hprof文件进行分析,看看到底是哪个对象太多了，导致内存溢出了
+   8、总结：
+一般常见的OOM，要么是短时间内涌入大量的对象，导致你的系统根本支持不住，此时你可以考虑优化代码，或者是加机器；要么是长时间来看，你的很多对象不用了但是还被引用，就是内存泄露了，你也是优化代码就好了；这就会导致大量的对象不断进入老年代，然后频繁full gc之后始终没法回收，就撑爆了
+要么是加载的类过多，导致class在永久代理保存的过多，始终无法释放，就会撑爆
+我这里可以给大家最后提一点，人家肯定会问你有没有处理过线上的问题，你就说有，最简单的，你说有个小伙子用了本地缓存，就放map里，结果没控制map大小，可以无限扩容，最终导致内存爆了，后来解决方案就是用了一个ehcache框架，自动LRU清理掉旧数据，控制内存占用就好了。
+另外，务必提到，线上jvm必须配置-XX:+HeapDumpOnOutOfMemoryError，-XX:HeapDumpPath=/path/heap/dump。因为这样就是说OOM的时候自动导出一份内存快照，你就可以分析发生OOM时的内存快照了，到底是哪里出现的问题。
+  9、修改代码调优，修改jvm配置调优，部署接口压测
+代码进行优化、根据压测的情况去进行一定的jvm参数的调优，一个系统的QPS，一个是系统的接口的性能，压测到一定程度的时候 ，机器的cpu、内存、io、磁盘的一些负载情况，jvm的表现
+
+
+1.1线上CPU100%排查
+1.top -c  查看cpu情况
+2.使用 top -Hp 126018 查看一个进程的线程运行信息列表，可按下P，进程按照cpu使用率排序
+3.上图pid是十进制的数据，需要将其转为十六进制，使用命令 printf '%x' 126019 输出 ：1ec43
+4.使用命令将进程快照导出：jstack -l 126018 > ./126018.stack
+5.然后使用less命令查看线程1ec43干了什么：
+https://www.pianshen.com/article/7771960643/
+
+
+2.系统频繁full gc
+  比OOM稍微好点的是频繁full gc，如果OOM就是系统自动就挂了，很惨，你绝对是超级大case，但是频繁full gc会好多，其实就是表现为经常请求系统的时候，很卡，一个请求卡半天没响应，就是会觉得系统性能很差。
+首先，你必须先加上一些jvm的参数，让线上系统定期打出来gc的日志：
+-XX:+PrintGCTimeStamps
+-XX:+PrintGCDeatils
+-Xloggc:<filename>
+
+给大家还是举个例子吧，我们线上系统的一个真实例子，大家可以用这个例子在面试里来说，比如说当时我们有个系统，在后台运行，每次都会一下子从mysql里加载几十万行数据进来各种处理，类似于定时批量处理，这个时候，如果对几十万数据的处理比较慢，就会导致比如几分钟里面，大量数据囤积在老年代，然后没法回收，就会频繁full gc。
+当时我们其实就是根据这个发现了当时两台机器已经不够了，因为我们当时线上用了两台4核8G的虚拟机在跑，明显不够了，就要加机器了，所以增加了机器，每台机器处理更少的数据量，那不就ok了，马上就缓解了频繁full gc的问题了。
+
+
+3.怎么jvm调优  有过哪些调优实践
+  1问题中的第9步算一个，例如压测 根据压测情况进行一定的jvm参数调优
+  2.哪些常用的参数  https://www.cnblogs.com/yuer629/p/7481897.html
+   Xss 每个线程虚拟机栈的大小
+   Xms  堆的初始值
+   Xmx   堆能达到的最大值
+JVM 几个重要的参数：
+-server -Xmx3g -Xms3g -XX:MaxPermSize=128m
+-XX:NewRatio=1 新生代（Eden + 2*S）与老年代（不包括永久区）的比值
+-XX:SurvivorRatio=8 2个Survivor区和Eden区的比值
+-XX:+UseParallelGC
+-XX:ParallelGCThreads=8
+-XX:+UseParallelOldGC 这个是JAVA 6出现的参数选项
+-XX:LargePageSizeInBytes=128m 内存页的大小， 不可设置过大， 会影响Perm的大小。
+-XX:+UseFastAccessorMethods 原始类型的快速优化
+-XX:+Disable‘’ExplicitGC 关闭System.gc()
+jvm问题排查和调优：
+jps主要用来输出JVM中运行的进程状态信息。
+jstat命令可以用于持续观察虚拟机内存中各个分区的使用率以及GC的统计数据
+jmap可以用来查看堆内存的使用详情。
+jstack可以用来查看Java进程内的线程堆栈信息。 jstack是个非常好用的工具，结合应用日志可以迅速定位到问题线程。
+Java性能分析工具
+jdk会自带JMC(JavaMissionControl)工具。可以分析本地应用以及连接远程ip使用。提供了实时分析线程、内存，CPU、GC等信息的可视化界面。
+
+导致Full GC一般由于以下几种情况：
+1.旧生代空间不足
+调优时尽量让对象在新生代GC时被回收、让对象在新生代多存活一段时间和不要创建过大的对象及数组避免直接在旧生代创建对象
+新生代设置过小
+ 一是新生代GC次数非常频繁，增大系统消耗；二是导致大对象直接进入旧生代，占据了旧生代剩余空间，诱发Full GC
+2). 新生代设置过大
+一是新生代设置过大会导致旧生代过小（堆总量一定），从而诱发Full GC；二是新生代GC耗时大幅度增加
+3). Survivor设置过小
+导致对象从eden直接到达旧生代
+4). Survivor设置过大
+导致eden过小，增加了GC频率
+一般说来新生代占整个堆1/3比较合适
+GC策略的设置方式
+1). 吞吐量优先 可由-XX:GCTimeRatio=n来设置
+2). 暂停时间优先 可由-XX:MaxGCPauseRatio=n来设置
+
+
+
+
+
+4.解释动态代理是什么
+https://www.jianshu.com/p/ae9e4b63dda5
+两种动态代理：
+（1）jdk动态代理，jdk动态代理是由Java内部的反射机制来实现的，目标类基于统一的接口（InvocationHandler）
+（2）cglib动态代理，cglib动态代理底层则是借助asm来实现的，cglib这种第三方类库实现的动态代理应用更加广泛，且在效率上更有优势。
+   cglib动态代理实现：
+JDK的动态代理机制只能代理实现了接口的类，而不能实现接口的类就不能实现JDK的动态代理，cglib是针对类来实现代理的，他的原理是对指定的目标类生成一个子类，并覆盖其中方法实现增强，但因为采用的是继承，所以不能对final修饰的类进行代理。
+CGLIB的核心类：
+net.sf.cglib.proxy.Enhancer – 主要的增强类
+net.sf.cglib.proxy.MethodInterceptor – 主要的方法拦截类，它是Callback接口的子接口，需要用户实现
+net.sf.cglib.proxy.MethodProxy – JDK的java.lang.reflect.Method类的代理类，可以方便的实现对源对象方法的调用。
+net.sf.cglib.proxy.MethodInterceptor接口是最通用的回调（callback）类型，它经常被基于代理的AOP用来实现拦截（intercept）方法的调用。这个接口只定义了一个方法
+public Object intercept(Object object, java.lang.reflect.Method method,
+Object[] args, MethodProxy proxy) throws Throwable;
+第一个参数是代理对像，第二和第三个参数分别是拦截的方法和方法的参数。原来的方法可能通过使用java.lang.reflect.Method对象的一般反射调用，或者使用 net.sf.cglib.proxy.MethodProxy对象调用。net.sf.cglib.proxy.MethodProxy通常被首选使用，因为它更快。
+
+
+6.AQS源码底层 聊聊你对AQS的理解
+https://zhuanlan.zhihu.com/p/86072774
+
+
+7.分类说明JUC包常用类有哪些 https://blog.csdn.net/qq_42253147/article/details/96903458
+JUC中常用类汇总
+JUC的atomic包下运用了CAS的AtomicBoolean、AtomicInteger、AtomicReference等原子变量类
+JUC的locks包下的AbstractQueuedSynchronizer（AQS）以及使用AQS的ReentantLock（显式锁）、ReentrantReadWriteLock
+附：运用了AQS的类还有：Semaphore、CountDownLatch、ReentantLock（显式锁）、ReentrantReadWriteLock
+JUC下的一些同步工具类：CountDownLatch（闭锁）、Semaphore（信号量）、CyclicBarrier（栅栏）、FutureTask
+JUC下的一些并发容器类：ConcurrentHashMap、CopyOnWriteArrayList
+JUC下的一些Executor框架的相关类： 线程池的工厂类->Executors 线程池的实现类->ThreadPoolExecutor/ForkJoinPool
+JUC下的一些阻塞队列实现类：ArrayBlockingQueue、LinkedBlockingQueue、PriorityBlockingQueue
+
+7.1ReentrantLock的底层原理
+https://zhuanlan.zhihu.com/p/249147493
+7.2算法：CLH锁的原理及实现
+https://blog.csdn.net/claram/article/details/83828768
+
+
+
+8.kafka重复消费场景以及解决方式   https://blog.csdn.net/hellozhxy/article/details/114602714
+  1.Consumer 在消费过程中，应用进程被强制kill掉或发生异常退出。
+例如在一次poll500条消息后，消费到200条时，进程被强制kill消费导致offset 未提交，或出现异常退出导致消费到offset未提交。下次重启时，依然会重新拉取这500消息，这样就造成之前消费到200条消息重复消费了两次。因此在有消费者线程的应用中，应尽量避免使用kill -9这样强制杀进程的命令。
+  2.消费者消费时间过长
+max.poll.interval.ms参数定义了两次poll的最大间隔，它的默认值是 5 分钟，表示你的 Consumer 程序如果在 5 分钟之内无法消费完 poll 方法返回的消息，那么 Consumer 会主动发起“离开组”的请求，Coordinator 也会开启新一轮 Rebalance。若消费者消费的消息比较耗时，那么这种情况可能就会出现。
+   第一种思路是提高消费能力，提高单条消息的处理速度，例如对消息处理中比 较耗时的步骤可通过异步的方式进行处理、利用多线程处理等。在缩短单条消息消费时常的同时，根据实际场景可将max.poll.interval.ms值设置大一点，避免不 必要的rebalance，此外可适当减小max.poll.records的值，默认值是500，可根 据实际消息速率适当调小。这种思路可解决因消费时间过长导致的重复消费问题， 对代码改动较小，但无法绝对避免重复消费问题。
+第二种思路是引入单独去重机制，例如生成消息时，在消息中加入唯一标识符如消息id等。在消费端，我们可以保存最近的1000条消息id到redis或mysql表中，配置max.poll.records的值小于1000。在消费消息时先通过前置表去重后再进行消息的处理。
+此外，在一些消费场景中，我们可以将消费的接口幂等处理，例如数据库的查 询操作天然具有幂等性，这时候可不用考虑重复消费的问题。对于例如新增数据的操作，可通过设置唯一键等方式以达到单次与多次操作对系统的影响相同，从而使接口具有幂等性。
+
+
+9.死锁
+
+
+10.
+
+
+
+
+看了这篇Dubbo RPC面试题，让天下没有难面的面试题！ https://blog.csdn.net/xlgen157387/article/details/88746098
+
+
+1.java动态代理有哪几种
+
+2.Protobuf
+
+
+3.序列化方式有哪几种  有什么区别
+
+
+https://blog.csdn.net/bjweimengshu/article/details/79607522
+1.分布式事务：
+XA:
+在XA协议中包含着两个角色：事务协调者和事务参与者。
+在XA分布式事务的第一阶段，作为事务协调者的节点会首先向所有的参与者节点发送Prepare请求。
+在接到Prepare请求之后，每一个参与者节点会各自执行与事务有关的数据更新，写入Undo Log和Redo Log。如果参与者执行成功，暂时不提交事务，而是向事务协调节点返回“完成”消息。
+当事务协调者接到了所有参与者的返回消息，整个分布式事务将会进入第二阶段。
+在XA分布式事务的第二阶段，如果事务协调节点在之前所收到都是正向返回，那么它将会向所有事务参与者发出Commit请求。
+接到Commit请求之后，事务参与者节点会各自进行本地的事务提交，并释放锁资源。当本地事务完成提交后，将会向事务协调者返回“完成”消息。
+当事务协调者接收到所有事务参与者的“完成”反馈，整个分布式事务完成。
+以上所描述的是XA两阶段提交的正向流程，接下来我们看一看失败情况的处理流程：
+
+
+
+2.MQ
+
+
+
+
+
+seata
+
+couchbase:
+1. couchbase与其他nosql数据库的区别  https://blog.csdn.net/weixin_34037515/article/details/91467879
+
+总结类：
+1.https://blog.csdn.net/xiamiflying/article/details/82081202   java面试题
+
+暴击问题：
+2.Protobuf
+
+
+
+
+
+
+
+
+
+远端存储  hdfs    liquidio 可以支持fuse挂载文件系统；  cache设置   filemapping文件缓存
+
+
+
+manager-pod进程
+1.分发配置文件，  把systemctld文件分发，并且
+2.能够查询本地所有的pod 用的那个模型，能够进行管理。 惰性删除。 当需要预加载时，查看本地缓存占用是否超过了70% 则进行对比删除不再使用的模型。
+3.启动定时任务，
+4.一些必要的metrics暴露
+5.
+
+cache-pod 是以systemctl-service形式启动，调用liquidio-库 实现fuse的挂载。。
+
+这个原因是如果cache进程也以pod方式挂载的话，需要修改docker的配置，1.先将pod挂载透传出来，再映射到业务pod。 Docker修改太
+
+
+
+1.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

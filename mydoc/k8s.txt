@@ -1,0 +1,23 @@
+1.有哪些基本组件
+Deployment  cloneset
+
+
+
+2.升级怎么实现分批升级
+cloneset中有个paration 可以精准控制升级数量
+
+
+3.目前升级策略是什么样的
+答：先选择升级数量
+然后有三种策略：
+①一上一下，先启动一个新的，再启动旧的
+②最大不可用数量可以设置
+③每次升级过程中最多有 25%不可用
+
+主要了解k8s 的升级策略updateStrategy yaml
+maxSurge
+maxUnavailable
+partition
+Pause
+
+4.

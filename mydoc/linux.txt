@@ -1,0 +1,8 @@
+linux:
+1.linux终端输出内容到文件 https://www.linuxprobe.com/linux-output-file.html
+2.Linux下统计出现次数最多的指定字段值 https://blog.csdn.net/saimoeww/article/details/84189317
+  cat /Users/heyong/Desktop/test1.txt | awk '{print $4}' | cut -c 8- | sed "s/'//g" | sort | uniq -c
+
+
+linux 常用命令  操作文件
+1.查看某个进程的线程
